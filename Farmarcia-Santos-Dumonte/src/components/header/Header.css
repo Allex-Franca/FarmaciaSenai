@@ -1,0 +1,152 @@
+.header {
+  width: 100%;
+  min-height: 70px;
+  padding: 12px 24px;
+  background-color: #68b5f7;
+
+  display: flex;
+  align-items: center;
+  gap: 24px;
+
+  box-sizing: border-box;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: bold;
+  white-space: nowrap;
+}
+
+.logo-icon {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background-color: white;
+  color: #2588d8;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 26px;
+}
+.pesquisa {
+  flex: 1;
+  max-width: 650px;
+  height: 38px;
+  margin: 0 auto;
+
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  background-color: white;
+  border-radius: 6px;
+  padding: 0 12px;
+}
+
+.lupa {
+  color: #398bd0;
+  font-size: 22px;
+}
+
+.pesquisa input {
+  width: 100%;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: 14px;
+}
+
+.usuario,
+.carrinho {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.usuario-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: white;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 19px;
+}
+
+.carrinho span {
+  font-size: 25px;
+
+  .logo {
+    font-size: 15px;
+    flex: 1;
+  }
+
+  .pesquisa {
+    order: 3;
+    flex-basis: 100%;
+    max-width: none;
+  }
+}
+usuario,
+.carrinho {
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.usuario img {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+}
+
+.carrinho img {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+}
+
+.usuario,
+.carrinho {
+  opacity: 0.75;
+}
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  white-space: nowrap;
+}
+
+.logo img {
+  width: 45px;
+  height: 45px;
+  object-fit: contain;
+  flex-shrink: 0;
+}

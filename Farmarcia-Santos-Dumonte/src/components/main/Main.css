@@ -1,0 +1,78 @@
+.main {
+  width: 100%;
+  background-color: white;
+}
+
+/* Banner com setas */
+.banner {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 20px 12px;
+}
+
+.banner-conteudo {
+  flex: 1;
+  height: 220px;
+  overflow: hidden;
+  border-radius: 10px;
+  background-color: #d9d9d9;
+}
+
+.banner-conteudo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.seta {
+  border: none;
+  background: transparent;
+  font-size: 25px;
+  cursor: pointer;
+  padding: 5px;
+}
+
+/* Produtos */
+.produtos {
+  width: 100%;
+}
+
+.produtos h2 {
+  font-size: 12px;
+  font-weight: normal;
+  padding: 0 7px 5px;
+  margin: 0;
+  border-bottom: 2px solid #666;
+}
+
+.produtos-lista {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 26px;
+  padding: 22px 21px;
+}
+
+.produto-card {
+  height: 240px;
+  background-color: #d9d9d9;
+  border-radius: 8px;
+}
+
+/* Responsividade */
+@media (max-width: 700px) {
+  .banner-conteudo {
+    height: 160px;
+  }
+
+  .produtos-lista {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+    padding: 16px;
+  }
+
+  .produto-card {
+    height: 220px;
+  }
+}
