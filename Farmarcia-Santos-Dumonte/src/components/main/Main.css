@@ -143,3 +143,7 @@
     min-height: 220px;
   }
 }
+.produto-botao:hover {
+  background-color: #0C85F0;
+  transition: background-color 0.3s ease;
+}
