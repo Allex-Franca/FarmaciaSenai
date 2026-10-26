@@ -6,7 +6,7 @@ function Footer() {
     <footer className="footer">
       <div className="footer-conteudo">
         <div className="footer-marca">
-          <h2>Farmácia<span>+</span></h2>
+          <h2>Farmácia<span> Santos Dumonte</span></h2>
           <p>
             Cuidando da sua saúde e do seu bem-estar
             todos os dias.
