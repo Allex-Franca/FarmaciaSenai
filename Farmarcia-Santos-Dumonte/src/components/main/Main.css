@@ -147,3 +147,30 @@
   background-color: #0C85F0;
   transition: background-color 0.3s ease;
 }
+
+
+/* O card inteiro abre os detalhes sem alterar o visual existente. */
+.produto-card-clique {
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  text-align: left;
+  font: inherit;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.produto-card-clique:focus-visible {
+  outline: 3px solid #0c85f0;
+  outline-offset: -3px;
+}
+
+.produto-card-clique .produto-info {
+  flex: 1;
+}
+
+.produto-card-clique .produto-botao { display: block; text-align: center; box-sizing: border-box; }

@@ -1,35 +1,48 @@
-  import "./Header.css";
-  import User from '../../assets/img/user.png'
-  import Carrinho from '../../assets/img/carrinho.png'
-  import Logo from '../../assets/img/Logo.png'
+import "./Header.css";
+import User from "../../assets/img/user.png";
+import Carrinho from "../../assets/img/carrinho.png";
+import Logo from "../../assets/img/Logo.png";
 
-
-
-  function Header() {
-    return (
-      <header className="header">
-        <a href="/" className="logo">
-          <div className="logo-icon"><img src={Logo} alt="" /></div>
-          <span>Farmácia Santos Dumonte</span>
-        </a>
-
-        <div className="pesquisa">
-          <span className="lupa">⌕</span>
-          <input
-            type="text"
-            placeholder="Buscar medicamentos e produtos..."
-          />
+function Header({ onInicio, onUsuario, onCarrinho, totalItens = 0 }) {
+  return (
+    <header className="header">
+      <a
+        href="#inicio"
+        className="logo"
+        onClick={(event) => {
+          event.preventDefault();
+          onInicio?.();
+        }}
+      >
+        <div className="logo-icon">
+          <img src={Logo} alt="" />
         </div>
+        <span>Farmácia Santos Dumonte</span>
+      </a>
 
-        <button className="usuario" aria-label="Minha conta">
-          <span className="usuario-icon"><img src={User} alt="" /></span>
-        </button>
+      <div className="pesquisa">
+        <span className="lupa">⌕</span>
+        <input type="text" placeholder="Buscar medicamentos e produtos..." />
+      </div>
 
-        <button className="carrinho" aria-label="Carrinho de compras">
-          <span><img src={Carrinho} alt="" /></span>
-        </button>
-      </header>
-    );
-  }
+      <button className="usuario" aria-label="Minha conta" onClick={onUsuario}>
+        <span className="usuario-icon">
+          <img src={User} alt="" />
+        </span>
+      </button>
 
-  export default Header;
+      <button
+        className="carrinho"
+        aria-label={`Carrinho de compras, ${totalItens} item(ns)`}
+        onClick={onCarrinho}
+      >
+        <span className="carrinho-imagem">
+          <img src={Carrinho} alt="" />
+        </span>
+        <span className="carrinho-contador">{totalItens}</span>
+      </button>
+    </header>
+  );
+}
+
+export default Header;

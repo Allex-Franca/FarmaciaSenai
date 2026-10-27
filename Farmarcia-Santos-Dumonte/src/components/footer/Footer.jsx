@@ -1,4 +1,3 @@
-
 import "./Footer.css";
 
 function Footer() {
@@ -6,11 +5,10 @@ function Footer() {
     <footer className="footer">
       <div className="footer-conteudo">
         <div className="footer-marca">
-          <h2>Farmácia<span> Santos Dumonte</span></h2>
-          <p>
-            Cuidando da sua saúde e do seu bem-estar
-            todos os dias.
-          </p>
+          <h2>
+            Farmácia<span> Santos Dumonte</span>
+          </h2>
+          <p>Cuidando da sua saúde e do seu bem-estar todos os dias.</p>
         </div>
 
         <div className="footer-links">
@@ -31,8 +29,7 @@ function Footer() {
 
       <div className="footer-final">
         <p>
-          © {new Date().getFullYear()} Farmácia+.
-          Todos os direitos reservados.
+          © {new Date().getFullYear()} Farmácia+. Todos os direitos reservados.
         </p>
       </div>
     </footer>
