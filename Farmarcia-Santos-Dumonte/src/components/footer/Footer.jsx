@@ -21,9 +21,9 @@ function Footer() {
 
         <div className="footer-contato" id="contato">
           <h3>Fale conosco</h3>
-          <p>Email: contato@farmaciamais.com.br</p>
-          <p>Telefone: (00) 00000-0000</p>
-          <p>Atendimento: Seg. a Sex.</p>
+          <p>Email: FarmaciaSantosDumonte@gmail.com</p>
+          <p>Telefone: (55) 48 95435-4924</p>
+          <p>Atendimento: Seg. a Sab.</p>
         </div>
       </div>
 
