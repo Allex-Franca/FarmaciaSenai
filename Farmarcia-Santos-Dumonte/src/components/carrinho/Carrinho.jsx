@@ -1,4 +1,3 @@
-
 import "./Carrinho.css";
 
 function precoEmNumero(preco) {
@@ -26,33 +25,23 @@ function Carrinho({
   onRemover,
   onContinuarComprando,
 }) {
-  const totalItens = itens.reduce(
-    (total, item) => total + item.quantidade,
-    0
-  );
+  const totalItens = itens.reduce((total, item) => total + item.quantidade, 0);
 
   const subtotal = itens.reduce(
-    (total, item) =>
-      total + precoEmNumero(item.preco) * item.quantidade,
-    0
+    (total, item) => total + precoEmNumero(item.preco) * item.quantidade,
+    0,
   );
 
   return (
     <main className="pagina-carrinho">
-      <button
-        className="carrinho-voltar"
-        type="button"
-        onClick={onVoltar}
-      >
+      <button className="carrinho-voltar" type="button" onClick={onVoltar}>
         <span aria-hidden="true">←</span>
         Continuar navegando
       </button>
 
       <header className="carrinho-titulo">
         <div>
-          <span className="carrinho-etiqueta">
-            SUA SACOLA
-          </span>
+          <span className="carrinho-etiqueta">SUA SACOLA</span>
           <h1>Carrinho de compras</h1>
           <p>Confira seus produtos antes de continuar.</p>
         </div>
@@ -79,15 +68,11 @@ function Carrinho({
             </svg>
           </div>
 
-          <span className="carrinho-vazio-etiqueta">
-            SUA SACOLA ESTÁ LIVRE
-          </span>
+          <span className="carrinho-vazio-etiqueta">SUA SACOLA ESTÁ LIVRE</span>
 
           <h2>Seu carrinho está vazio</h2>
 
-          <p>
-            Explore nossos produtos e encontre o que você precisa.
-          </p>
+          <p>Explore nossos produtos e encontre o que você precisa.</p>
 
           <button
             className="carrinho-botao-principal"
@@ -99,10 +84,7 @@ function Carrinho({
         </section>
       ) : (
         <div className="carrinho-layout">
-          <section
-            className="carrinho-lista"
-            aria-label="Produtos no carrinho"
-          >
+          <section className="carrinho-lista" aria-label="Produtos no carrinho">
             <div className="carrinho-lista-cabecalho">
               <h2>Seus produtos</h2>
               <span>
@@ -144,17 +126,13 @@ function Carrinho({
 
                 <div className="carrinho-item-controles">
                   <strong className="carrinho-item-subtotal">
-                    {moeda(
-                      precoEmNumero(item.preco) * item.quantidade
-                    )}
+                    {moeda(precoEmNumero(item.preco) * item.quantidade)}
                   </strong>
 
                   <div className="carrinho-quantidade">
                     <button
                       type="button"
-                      onClick={() =>
-                        onAlterarQuantidade?.(item.id, -1)
-                      }
+                      onClick={() => onAlterarQuantidade?.(item.id, -1)}
                       disabled={item.quantidade <= 1}
                       aria-label={`Diminuir quantidade de ${item.nome}`}
                     >
@@ -165,9 +143,7 @@ function Carrinho({
 
                     <button
                       type="button"
-                      onClick={() =>
-                        onAlterarQuantidade?.(item.id, 1)
-                      }
+                      onClick={() => onAlterarQuantidade?.(item.id, 1)}
                       aria-label={`Aumentar quantidade de ${item.nome}`}
                     >
                       +
@@ -188,9 +164,7 @@ function Carrinho({
           </section>
 
           <aside className="carrinho-resumo">
-            <span className="carrinho-resumo-etiqueta">
-              RESUMO
-            </span>
+            <span className="carrinho-resumo-etiqueta">RESUMO</span>
 
             <h2>Resumo do pedido</h2>
 
@@ -201,9 +175,7 @@ function Carrinho({
 
             <div className="carrinho-resumo-linha">
               <span>Entrega</span>
-              <span className="carrinho-a-calcular">
-                A calcular
-              </span>
+              <span className="carrinho-a-calcular">A calcular</span>
             </div>
 
             <div className="carrinho-resumo-total">
@@ -216,7 +188,7 @@ function Carrinho({
               type="button"
               onClick={() =>
                 window.alert(
-                  "Seu carrinho está pronto! A finalização precisa ser conectada a um sistema de entrega e pagamento."
+                  "Seu carrinho está pronto! A finalização precisa ser conectada a um sistema de entrega e pagamento.",
                 )
               }
             >
@@ -225,8 +197,7 @@ function Carrinho({
             </button>
 
             <p className="carrinho-resumo-aviso">
-              O valor da entrega será informado antes da conclusão
-              do pedido.
+              O valor da entrega será informado antes da conclusão do pedido.
             </p>
 
             <div className="carrinho-seguranca">

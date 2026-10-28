@@ -1,4 +1,3 @@
-
 import "./Header.css";
 import User from "../../assets/img/user.png";
 import Carrinho from "../../assets/img/carrinho.png";
@@ -28,9 +27,7 @@ function Header({
           <img src={Logo} alt="" />
         </span>
 
-        <span className="logo-nome">
-          Farmácia Santos Dumonte
-        </span>
+        <span className="logo-nome">Farmácia Santos Dumonte</span>
       </a>
 
       <form
@@ -93,9 +90,7 @@ function Header({
         >
           <img src={Carrinho} alt="" />
 
-          <span className="carrinho-contador">
-            {totalItens}
-          </span>
+          <span className="carrinho-contador">{totalItens}</span>
         </button>
       </div>
     </header>

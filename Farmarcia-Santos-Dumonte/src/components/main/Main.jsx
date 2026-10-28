@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import "./Main.css";
 
@@ -22,7 +21,7 @@ function Main({ onVerProduto, pesquisa = "" }) {
 
   function mudarBanner(direcao) {
     setBannerAtual(
-      (atual) => (atual + direcao + banners.length) % banners.length
+      (atual) => (atual + direcao + banners.length) % banners.length,
     );
   }
 
@@ -89,9 +88,7 @@ function Main({ onVerProduto, pesquisa = "" }) {
       <section className="produtos" id="produtos">
         <div className="produtos-cabecalho">
           <div>
-            <span className="produtos-subtitulo">
-              CUIDADOS PARA VOCÊ
-            </span>
+            <span className="produtos-subtitulo">CUIDADOS PARA VOCÊ</span>
 
             <h2>
               {termoPesquisa ? "Resultados da pesquisa" : "Nossos produtos"}
@@ -153,8 +150,8 @@ function Main({ onVerProduto, pesquisa = "" }) {
             <h3>Nenhum produto encontrado</h3>
 
             <p>
-              Não encontramos produtos para "{pesquisa}". Tente outro nome
-              ou confira se digitou corretamente.
+              Não encontramos produtos para "{pesquisa}". Tente outro nome ou
+              confira se digitou corretamente.
             </p>
           </div>
         )}

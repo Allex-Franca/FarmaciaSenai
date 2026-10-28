@@ -1,4 +1,3 @@
-
 import "./Footer.css";
 
 function Footer() {
@@ -12,9 +11,7 @@ function Footer() {
             Farmácia <span>Santos Dumonte</span>
           </a>
 
-          <p>
-            Cuidando da sua saúde e do seu bem-estar todos os dias.
-          </p>
+          <p>Cuidando da sua saúde e do seu bem-estar todos os dias.</p>
         </section>
 
         <nav className="footer-links" aria-label="Links rápidos">
@@ -37,9 +34,7 @@ function Footer() {
 
           <p>
             <span>Telefone</span>
-            <a href="tel:+5548954354924">
-              (48) 95435-4924
-            </a>
+            <a href="tel:+5548954354924">(48) 95435-4924</a>
           </p>
 
           <p>

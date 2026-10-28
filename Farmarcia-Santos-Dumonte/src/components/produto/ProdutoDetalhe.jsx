@@ -1,13 +1,7 @@
-
 import { useState } from "react";
 import "./ProdutoDetalhe.css";
 
-function ProdutoDetalhe({
-  produto,
-  onVoltar,
-  onAdicionar,
-  onIrCarrinho,
-}) {
+function ProdutoDetalhe({ produto, onVoltar, onAdicionar, onIrCarrinho }) {
   const [quantidade, setQuantidade] = useState(1);
   const [adicionado, setAdicionado] = useState(false);
 
@@ -23,11 +17,7 @@ function ProdutoDetalhe({
 
   return (
     <main className="detalhe-produto">
-      <button
-        className="detalhe-voltar"
-        type="button"
-        onClick={onVoltar}
-      >
+      <button className="detalhe-voltar" type="button" onClick={onVoltar}>
         <span aria-hidden="true">←</span>
         Voltar para produtos
       </button>
@@ -53,20 +43,14 @@ function ProdutoDetalhe({
             Produto
           </div>
 
-          <span className="detalhe-categoria">
-            SELECIONADO PARA VOCÊ
-          </span>
+          <span className="detalhe-categoria">SELECIONADO PARA VOCÊ</span>
 
           <h1>{produto.nome}</h1>
 
-          <p className="detalhe-descricao">
-            {produto.descricao}
-          </p>
+          <p className="detalhe-descricao">{produto.descricao}</p>
 
           <div className="detalhe-preco-area">
-            <span className="detalhe-preco-legenda">
-              Preço do produto
-            </span>
+            <span className="detalhe-preco-legenda">Preço do produto</span>
             <p className="detalhe-preco">{produto.preco}</p>
           </div>
 
@@ -84,9 +68,7 @@ function ProdutoDetalhe({
                 </svg>
               </span>
               <div>
-                <span className="detalhe-dado-titulo">
-                  Apresentação
-                </span>
+                <span className="detalhe-dado-titulo">Apresentação</span>
                 <p>{produto.apresentacao || "Não informada"}</p>
               </div>
             </div>
@@ -110,9 +92,7 @@ function ProdutoDetalhe({
                 </svg>
               </span>
               <div>
-                <span className="detalhe-dado-titulo">
-                  Fabricante
-                </span>
+                <span className="detalhe-dado-titulo">Fabricante</span>
                 <p>{produto.fabricante || "Não informado"}</p>
               </div>
             </div>
@@ -148,25 +128,18 @@ function ProdutoDetalhe({
             type="button"
             onClick={adicionarAoCarrinho}
           >
-            {adicionado
-              ? "Adicionado ao carrinho ✓"
-              : "Adicionar ao carrinho"}
-            {!adicionado && (
-              <span aria-hidden="true"> →</span>
-            )}
+            {adicionado ? "Adicionado ao carrinho ✓" : "Adicionar ao carrinho"}
+            {!adicionado && <span aria-hidden="true"> →</span>}
           </button>
 
           {adicionado && (
             <div className="detalhe-confirmacao" role="status">
               <span>
-                {quantidade} unidade(s) de {produto.nome} adicionada(s)
-                ao carrinho.
+                {quantidade} unidade(s) de {produto.nome} adicionada(s) ao
+                carrinho.
               </span>
 
-              <button
-                type="button"
-                onClick={onIrCarrinho}
-              >
+              <button type="button" onClick={onIrCarrinho}>
                 Ver carrinho →
               </button>
             </div>
@@ -174,8 +147,7 @@ function ProdutoDetalhe({
 
           <p className="detalhe-aviso">
             <span aria-hidden="true">ⓘ</span>
-            Leia a bula e consulte um profissional de saúde em caso
-            de dúvidas.
+            Leia a bula e consulte um profissional de saúde em caso de dúvidas.
           </p>
         </div>
       </section>

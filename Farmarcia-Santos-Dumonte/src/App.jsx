@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from "react";
 import "./App.css";
 import Header from "./components/header/Header";
@@ -24,7 +23,7 @@ function App() {
   const [produtoSelecionado, setProdutoSelecionado] = useState(null);
   const [pesquisa, setPesquisa] = useState("");
   const [carrinho, setCarrinho] = useState(() =>
-    lerArmazenamento(CHAVE_CARRINHO, [])
+    lerArmazenamento(CHAVE_CARRINHO, []),
   );
 
   useEffect(() => {
@@ -67,7 +66,7 @@ function App() {
         return atual.map((item) =>
           item.id === produto.id
             ? { ...item, quantidade: item.quantidade + quantidade }
-            : item
+            : item,
         );
       }
 
@@ -81,9 +80,9 @@ function App() {
         .map((item) =>
           item.id === id
             ? { ...item, quantidade: item.quantidade + variacao }
-            : item
+            : item,
         )
-        .filter((item) => item.quantidade > 0)
+        .filter((item) => item.quantidade > 0),
     );
   }
 
@@ -93,7 +92,7 @@ function App() {
 
   const totalItens = carrinho.reduce(
     (total, item) => total + item.quantidade,
-    0
+    0,
   );
 
   return (
@@ -118,10 +117,7 @@ function App() {
       )}
 
       {pagina === "inicio" && (
-        <Main
-          onVerProduto={abrirProduto}
-          pesquisa={pesquisa}
-        />
+        <Main onVerProduto={abrirProduto} pesquisa={pesquisa} />
       )}
 
       {pagina === "carrinho" && (
@@ -134,9 +130,7 @@ function App() {
         />
       )}
 
-      {pagina === "usuario" && (
-        <Usuario onVoltar={() => navegar("inicio")} />
-      )}
+      {pagina === "usuario" && <Usuario onVoltar={() => navegar("inicio")} />}
 
       <Footer />
     </div>

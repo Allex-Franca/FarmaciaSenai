@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import "./Usuario.css";
 
@@ -15,9 +14,7 @@ function carregarPerfil() {
   try {
     const dados = localStorage.getItem(CHAVE_PERFIL);
 
-    return dados
-      ? { ...perfilVazio, ...JSON.parse(dados) }
-      : perfilVazio;
+    return dados ? { ...perfilVazio, ...JSON.parse(dados) } : perfilVazio;
   } catch {
     return perfilVazio;
   }
@@ -53,11 +50,7 @@ function Usuario({ onVoltar }) {
 
   return (
     <main className="pagina-usuario">
-      <button
-        className="usuario-voltar"
-        type="button"
-        onClick={onVoltar}
-      >
+      <button className="usuario-voltar" type="button" onClick={onVoltar}>
         ← Voltar para a loja
       </button>
 
@@ -67,9 +60,7 @@ function Usuario({ onVoltar }) {
         <div>
           <span className="usuario-etiqueta">ÁREA DO CLIENTE</span>
           <h1>Minha conta</h1>
-          <p>
-            Gerencie seus dados para facilitar suas próximas compras.
-          </p>
+          <p>Gerencie seus dados para facilitar suas próximas compras.</p>
         </div>
       </section>
 
@@ -129,9 +120,7 @@ function Usuario({ onVoltar }) {
               type="tel"
               autoComplete="tel"
               value={perfil.telefone}
-              onChange={(event) =>
-                atualizar("telefone", event.target.value)
-              }
+              onChange={(event) => atualizar("telefone", event.target.value)}
               placeholder="(00) 00000-0000"
             />
           </label>
@@ -142,9 +131,7 @@ function Usuario({ onVoltar }) {
               type="text"
               autoComplete="street-address"
               value={perfil.endereco}
-              onChange={(event) =>
-                atualizar("endereco", event.target.value)
-              }
+              onChange={(event) => atualizar("endereco", event.target.value)}
               placeholder="Rua, número, bairro e cidade"
             />
           </label>
