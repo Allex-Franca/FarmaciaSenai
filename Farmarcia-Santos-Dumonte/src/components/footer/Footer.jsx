@@ -39,7 +39,7 @@ function Footer() {
 
           <p>
             <span>Atendimento</span>
-            Seg. a sáb.
+            Seg. a Sáb.
           </p>
         </section>
       </div>
