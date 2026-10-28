@@ -1,0 +1,157 @@
+
+.acessibilidade-container {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  z-index: 9999;
+  font-family: Arial, sans-serif;
+}
+
+.acessibilidade-botao {
+  width: 58px;
+  height: 58px;
+  border: none;
+  border-radius: 50%;
+  background-color: #0c85f0;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  transition: background-color 0.2s, transform 0.2s;
+}
+
+.acessibilidade-botao:hover {
+  background-color: #066bc4;
+  transform: scale(1.05);
+}
+
+.acessibilidade-botao:focus-visible,
+.acessibilidade-container button:focus-visible {
+  outline: 3px solid #ffbf00;
+  outline-offset: 3px;
+}
+
+.acessibilidade-painel {
+  position: absolute;
+  right: 0;
+  bottom: 72px;
+  width: 280px;
+  padding: 20px;
+  background-color: white;
+  color: #222;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  box-sizing: border-box;
+}
+
+.acessibilidade-cabecalho {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.acessibilidade-cabecalho h2 {
+  margin: 0;
+  font-size: 20px;
+}
+
+.acessibilidade-fechar {
+  border: none;
+  background: transparent;
+  color: #333;
+  font-size: 28px;
+  cursor: pointer;
+}
+
+.acessibilidade-descricao {
+  margin: 10px 0 18px;
+  color: #555;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.acessibilidade-opcao {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px 0;
+  border-top: 1px solid #e5e5e5;
+  font-size: 14px;
+}
+
+.acessibilidade-controles {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.acessibilidade-controles button {
+  width: 36px;
+  height: 36px;
+  border: 1px solid #0c85f0;
+  border-radius: 6px;
+  background: white;
+  color: #0c85f0;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.acessibilidade-controles button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.acessibilidade-controles span {
+  min-width: 42px;
+  text-align: center;
+}
+
+.acessibilidade-opcao input {
+  width: 18px;
+  height: 18px;
+  accent-color: #0c85f0;
+  cursor: pointer;
+}
+
+.acessibilidade-restaurar {
+  width: 100%;
+  margin-top: 14px;
+  padding: 11px;
+  border: 1px solid #0c85f0;
+  border-radius: 7px;
+  background: white;
+  color: #0c85f0;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.acessibilidade-restaurar:hover {
+  background-color: #eaf5ff;
+}
+
+.conteudo-site.acessibilidade-contraste,
+.conteudo-site.acessibilidade-contraste * {
+  font-weight: 1000 !important;
+}
+
+.conteudo-site.acessibilidade-links a {
+  outline: 2px solid #ff9800 !important;
+  outline-offset: 2px;
+  text-decoration: underline !important;
+  font-weight: bold;
+}
+
+@media (max-width: 480px) {
+  .acessibilidade-container {
+    right: 14px;
+    bottom: 14px;
+  }
+
+  .acessibilidade-painel {
+    width: min(280px, calc(100vw - 28px));
+  }
+}

@@ -1,3 +1,4 @@
+
 import { useEffect, useState } from "react";
 import "./App.css";
 import Header from "./components/header/Header";
@@ -6,6 +7,7 @@ import Footer from "./components/footer/Footer";
 import ProdutoDetalhe from "./components/produto/ProdutoDetalhe";
 import Carrinho from "./components/carrinho/Carrinho";
 import Usuario from "./components/usuario/Usuario";
+import Acessibilidade from "./components/acessibilidade/Acessibilidade";
 
 const CHAVE_CARRINHO = "farmacia-santos-dumonte-carrinho";
 
@@ -23,7 +25,7 @@ function App() {
   const [produtoSelecionado, setProdutoSelecionado] = useState(null);
   const [pesquisa, setPesquisa] = useState("");
   const [carrinho, setCarrinho] = useState(() =>
-    lerArmazenamento(CHAVE_CARRINHO, []),
+    lerArmazenamento(CHAVE_CARRINHO, [])
   );
 
   useEffect(() => {
@@ -66,7 +68,7 @@ function App() {
         return atual.map((item) =>
           item.id === produto.id
             ? { ...item, quantidade: item.quantidade + quantidade }
-            : item,
+            : item
         );
       }
 
@@ -80,9 +82,9 @@ function App() {
         .map((item) =>
           item.id === id
             ? { ...item, quantidade: item.quantidade + variacao }
-            : item,
+            : item
         )
-        .filter((item) => item.quantidade > 0),
+        .filter((item) => item.quantidade > 0)
     );
   }
 
@@ -92,47 +94,53 @@ function App() {
 
   const totalItens = carrinho.reduce(
     (total, item) => total + item.quantidade,
-    0,
+    0
   );
 
   return (
     <div className="app">
-      <Header
-        onInicio={() => navegar("inicio")}
-        onUsuario={() => navegar("usuario")}
-        onCarrinho={() => navegar("carrinho")}
-        totalItens={totalItens}
-        pesquisa={pesquisa}
-        onPesquisar={atualizarPesquisa}
-        onEnviarPesquisa={enviarPesquisa}
-      />
-
-      {pagina === "produto" && produtoSelecionado && (
-        <ProdutoDetalhe
-          produto={produtoSelecionado}
-          onVoltar={() => navegar("inicio")}
-          onAdicionar={adicionarAoCarrinho}
-          onIrCarrinho={() => navegar("carrinho")}
+      <div className="conteudo-site">
+        <Header
+          onInicio={() => navegar("inicio")}
+          onUsuario={() => navegar("usuario")}
+          onCarrinho={() => navegar("carrinho")}
+          totalItens={totalItens}
+          pesquisa={pesquisa}
+          onPesquisar={atualizarPesquisa}
+          onEnviarPesquisa={enviarPesquisa}
         />
-      )}
 
-      {pagina === "inicio" && (
-        <Main onVerProduto={abrirProduto} pesquisa={pesquisa} />
-      )}
+        {pagina === "produto" && produtoSelecionado && (
+          <ProdutoDetalhe
+            produto={produtoSelecionado}
+            onVoltar={() => navegar("inicio")}
+            onAdicionar={adicionarAoCarrinho}
+            onIrCarrinho={() => navegar("carrinho")}
+          />
+        )}
 
-      {pagina === "carrinho" && (
-        <Carrinho
-          itens={carrinho}
-          onVoltar={() => navegar("inicio")}
-          onAlterarQuantidade={alterarQuantidade}
-          onRemover={removerDoCarrinho}
-          onContinuarComprando={() => navegar("inicio")}
-        />
-      )}
+        {pagina === "inicio" && (
+          <Main onVerProduto={abrirProduto} pesquisa={pesquisa} />
+        )}
 
-      {pagina === "usuario" && <Usuario onVoltar={() => navegar("inicio")} />}
+        {pagina === "carrinho" && (
+          <Carrinho
+            itens={carrinho}
+            onVoltar={() => navegar("inicio")}
+            onAlterarQuantidade={alterarQuantidade}
+            onRemover={removerDoCarrinho}
+            onContinuarComprando={() => navegar("inicio")}
+          />
+        )}
 
-      <Footer />
+        {pagina === "usuario" && (
+          <Usuario onVoltar={() => navegar("inicio")} />
+        )}
+
+        <Footer />
+      </div>
+
+      <Acessibilidade pagina={pagina} />
     </div>
   );
 }
