@@ -370,4 +370,18 @@
   .produto-botao {
     transition: none;
   }
+  .opcao-secreta {
+  border: 2px dashed #0c85f0;
+  border-radius: 12px;
+  background: linear-gradient(145deg, #ffffff, #eaf5ff);
+  overflow: hidden;
+}
+
+.opcao-secreta:hover {
+  border-color: #075fb0;
+}
+
+.opcao-secreta .produto-info h3 {
+  color: #0c85f0;
+}
 }

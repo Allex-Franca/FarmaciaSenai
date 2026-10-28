@@ -4,6 +4,8 @@ import "./Main.css";
 import Banner1 from "../../assets/img/banner1.png";
 import Banner2 from "../../assets/img/banner2.png";
 import Banner3 from "../../assets/img/banner3.png";
+import TADALA from "../../assets/img/TADALA.png";
+
 import { produtos } from "../../data/produtos";
 
 const banners = [Banner1, Banner2, Banner3];
@@ -16,16 +18,30 @@ function normalizarTexto(texto) {
     .trim();
 }
 
+const produtoSecreto = {
+  id: "tadala-secreto",
+  nome: "Tadala",
+  descricao:
+    "Medicamento de uso adulto. Consulte a bula e as orientações de um profissional de saúde.",
+  preco: "R$ 200,00",
+  imagem: TADALA,
+  fabricante: "Conforme embalagem",
+  apresentacao: "Conforme embalagem",
+};
+
 function Main({ onVerProduto, pesquisa = "" }) {
   const [bannerAtual, setBannerAtual] = useState(0);
 
   function mudarBanner(direcao) {
     setBannerAtual(
-      (atual) => (atual + direcao + banners.length) % banners.length,
+      (atual) => (atual + direcao + banners.length) % banners.length
     );
   }
 
   const termoPesquisa = normalizarTexto(pesquisa);
+
+  // O produto secreto aparece somente ao pesquisar "tadala".
+  const mostrarOpcaoSecreta = termoPesquisa === "tadala";
 
   const produtosFiltrados = produtos.filter((produto) => {
     const informacoes = [
@@ -37,7 +53,10 @@ function Main({ onVerProduto, pesquisa = "" }) {
       .map(normalizarTexto)
       .join(" ");
 
-    return informacoes.includes(termoPesquisa);
+    return (
+      !mostrarOpcaoSecreta &&
+      (termoPesquisa === "" || informacoes.includes(termoPesquisa))
+    );
   });
 
   return (
@@ -88,21 +107,54 @@ function Main({ onVerProduto, pesquisa = "" }) {
       <section className="produtos" id="produtos">
         <div className="produtos-cabecalho">
           <div>
-            <span className="produtos-subtitulo">CUIDADOS PARA VOCÊ</span>
+            <span className="produtos-subtitulo">
+              CUIDADOS PARA VOCÊ
+            </span>
 
             <h2>
-              {termoPesquisa ? "Resultados da pesquisa" : "Nossos produtos"}
+              {termoPesquisa
+                ? "Resultados da pesquisa"
+                : "Nossos produtos"}
             </h2>
           </div>
 
           <span className="produtos-total">
-            {produtosFiltrados.length}{" "}
-            {produtosFiltrados.length === 1 ? "produto" : "produtos"}
+            {produtosFiltrados.length + (mostrarOpcaoSecreta ? 1 : 0)}{" "}
+            {produtosFiltrados.length + (mostrarOpcaoSecreta ? 1 : 0) === 1
+              ? "produto"
+              : "produtos"}
           </span>
         </div>
 
-        {produtosFiltrados.length > 0 ? (
+        {produtosFiltrados.length > 0 || mostrarOpcaoSecreta ? (
           <div className="produtos-lista">
+            {/* PRODUTO SECRETO */}
+            {mostrarOpcaoSecreta && (
+              <article className="produto-card opcao-secreta">
+                <button
+                  className="produto-card-clique"
+                  type="button"
+                  onClick={() => onVerProduto?.(produtoSecreto)}
+                  aria-label="Ver detalhes do Tadala"
+                >
+                  <div className="produto-imagem">
+                    <img src={TADALA} alt="Tadala" />
+                  </div>
+
+                  <div className="produto-info">
+                    <h3>Tadala</h3>
+
+                    <p className="produto-preco">R$ 200,00</p>
+
+                    <span className="produto-botao">
+                      Ver produto →
+                    </span>
+                  </div>
+                </button>
+              </article>
+            )}
+
+            {/* PRODUTOS NORMAIS */}
             {produtosFiltrados.map((produto) => (
               <article className="produto-card" key={produto.id}>
                 <button
@@ -125,8 +177,7 @@ function Main({ onVerProduto, pesquisa = "" }) {
                     <p className="produto-preco">{produto.preco}</p>
 
                     <span className="produto-botao">
-                      Ver produto
-                      <span aria-hidden="true"> →</span>
+                      Ver produto →
                     </span>
                   </div>
                 </button>
@@ -135,7 +186,10 @@ function Main({ onVerProduto, pesquisa = "" }) {
           </div>
         ) : (
           <div className="pesquisa-sem-resultados">
-            <span className="pesquisa-sem-resultados-icone" aria-hidden="true">
+            <span
+              className="pesquisa-sem-resultados-icone"
+              aria-hidden="true"
+            >
               <svg
                 viewBox="0 0 24 24"
                 fill="none"
@@ -150,8 +204,8 @@ function Main({ onVerProduto, pesquisa = "" }) {
             <h3>Nenhum produto encontrado</h3>
 
             <p>
-              Não encontramos produtos para "{pesquisa}". Tente outro nome ou
-              confira se digitou corretamente.
+              Não encontramos produtos para "{pesquisa}". Tente
+              outro nome ou confira se digitou corretamente.
             </p>
           </div>
         )}
