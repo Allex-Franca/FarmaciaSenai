@@ -1,6 +1,5 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./Main.css";
-
 import Banner1 from "../../assets/img/banner1.png";
 import Banner2 from "../../assets/img/banner2.png";
 import Banner3 from "../../assets/img/banner3.png";
@@ -9,6 +8,7 @@ import TADALA from "../../assets/img/TADALA.png";
 import { produtos } from "../../data/produtos";
 
 const banners = [Banner1, Banner2, Banner3];
+const produtosPorPagina = 10;
 
 function normalizarTexto(texto) {
   return String(texto ?? "")
@@ -31,6 +31,7 @@ const produtoSecreto = {
 
 function Main({ onVerProduto, pesquisa = "" }) {
   const [bannerAtual, setBannerAtual] = useState(0);
+  const [paginaAtual, setPaginaAtual] = useState(1);
 
   function mudarBanner(direcao) {
     setBannerAtual(
@@ -39,8 +40,6 @@ function Main({ onVerProduto, pesquisa = "" }) {
   }
 
   const termoPesquisa = normalizarTexto(pesquisa);
-
-  // O produto secreto aparece somente ao pesquisar "tadala".
   const mostrarOpcaoSecreta = termoPesquisa === "tadala";
 
   const produtosFiltrados = produtos.filter((produto) => {
@@ -58,6 +57,25 @@ function Main({ onVerProduto, pesquisa = "" }) {
       (termoPesquisa === "" || informacoes.includes(termoPesquisa))
     );
   });
+
+  useEffect(() => {
+    setPaginaAtual(1);
+  }, [termoPesquisa]);
+  const totalPaginas = Math.ceil(
+    produtosFiltrados.length / produtosPorPagina
+  );
+
+  const indiceInicial = (paginaAtual - 1) * produtosPorPagina;
+
+  const produtosDaPagina = produtosFiltrados.slice(
+    indiceInicial,
+    indiceInicial + produtosPorPagina
+  );
+
+  function mudarPagina(numero) {
+    setPaginaAtual(numero);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
 
   return (
     <main className="main" id="inicio">
@@ -127,63 +145,102 @@ function Main({ onVerProduto, pesquisa = "" }) {
         </div>
 
         {produtosFiltrados.length > 0 || mostrarOpcaoSecreta ? (
-          <div className="produtos-lista">
-            {/* PRODUTO SECRETO */}
-            {mostrarOpcaoSecreta && (
-              <article className="produto-card opcao-secreta">
+          <>
+            <div className="produtos-lista">
+              {mostrarOpcaoSecreta && (
+                <article className="produto-card opcao-secreta">
+                  <button
+                    className="produto-card-clique"
+                    type="button"
+                    onClick={() => onVerProduto?.(produtoSecreto)}
+                    aria-label="Ver detalhes do Tadala"
+                  >
+                    <div className="produto-imagem">
+                      <img src={TADALA} alt="Tadala" />
+                    </div>
+
+                    <div className="produto-info">
+                      <h3>Tadala</h3>
+                      <p className="produto-preco">R$ 200,00</p>
+
+                      <span className="produto-botao">
+                        Ver produto →
+                      </span>
+                    </div>
+                  </button>
+                </article>
+              )}
+              {produtosDaPagina.map((produto) => (
+                <article className="produto-card" key={produto.id}>
+                  <button
+                    className="produto-card-clique"
+                    type="button"
+                    onClick={() => onVerProduto?.(produto)}
+                    aria-label={`Ver detalhes de ${produto.nome}`}
+                  >
+                    <div className="produto-imagem">
+                      <img
+                        src={produto.imagem}
+                        alt={produto.nome}
+                        loading="lazy"
+                      />
+                    </div>
+
+                    <div className="produto-info">
+                      <h3>{produto.nome}</h3>
+                      <p className="produto-preco">{produto.preco}</p>
+
+                      <span className="produto-botao">
+                        Ver produto →
+                      </span>
+                    </div>
+                  </button>
+                </article>
+              ))}
+            </div>
+            {!termoPesquisa && totalPaginas > 1 && (
+              <nav className="paginacao" aria-label="Navegação dos produtos">
                 <button
-                  className="produto-card-clique"
                   type="button"
-                  onClick={() => onVerProduto?.(produtoSecreto)}
-                  aria-label="Ver detalhes do Tadala"
+                  className="paginacao-seta"
+                  onClick={() => mudarPagina(paginaAtual - 1)}
+                  disabled={paginaAtual === 1}
+                  aria-label="Página anterior"
                 >
-                  <div className="produto-imagem">
-                    <img src={TADALA} alt="Tadala" />
-                  </div>
-
-                  <div className="produto-info">
-                    <h3>Tadala</h3>
-
-                    <p className="produto-preco">R$ 200,00</p>
-
-                    <span className="produto-botao">
-                      Ver produto →
-                    </span>
-                  </div>
+                  ←
                 </button>
-              </article>
+
+                {Array.from(
+                  { length: totalPaginas },
+                  (_, indice) => indice + 1
+                ).map((numero) => (
+                  <button
+                    type="button"
+                    key={numero}
+                    className={`paginacao-numero ${
+                      paginaAtual === numero ? "ativo" : ""
+                    }`}
+                    onClick={() => mudarPagina(numero)}
+                    aria-current={
+                      paginaAtual === numero ? "page" : undefined
+                    }
+                  >
+                    {numero}
+                  </button>
+                ))}
+
+                <button
+                  type="button"
+                  className="paginacao-seta"
+                  onClick={() => mudarPagina(paginaAtual + 1)}
+                  disabled={paginaAtual === totalPaginas}
+                  aria-label="Próxima página"
+                >
+                  →
+                </button>
+              </nav>
             )}
-
-            {/* PRODUTOS NORMAIS */}
-            {produtosFiltrados.map((produto) => (
-              <article className="produto-card" key={produto.id}>
-                <button
-                  className="produto-card-clique"
-                  type="button"
-                  onClick={() => onVerProduto?.(produto)}
-                  aria-label={`Ver detalhes de ${produto.nome}`}
-                >
-                  <div className="produto-imagem">
-                    <img
-                      src={produto.imagem}
-                      alt={produto.nome}
-                      loading="lazy"
-                    />
-                  </div>
-
-                  <div className="produto-info">
-                    <h3>{produto.nome}</h3>
-
-                    <p className="produto-preco">{produto.preco}</p>
-
-                    <span className="produto-botao">
-                      Ver produto →
-                    </span>
-                  </div>
-                </button>
-              </article>
-            ))}
-          </div>
+          </>
         ) : (
           <div className="pesquisa-sem-resultados">
             <span
