@@ -1,12 +1,13 @@
+
 .contato {
   width: 100%;
   min-height: 450px;
   padding: 50px 24px;
   box-sizing: border-box;
+  text-align: center;
 }
 
 .contato-cabecalho {
-  text-align: center;
   margin-bottom: 45px;
 }
 
@@ -30,41 +31,29 @@
 }
 
 .contato-card {
-  width: 270px;
+  width: 260px;
   padding: 30px 20px;
   background: white;
   border-radius: 12px;
   box-shadow: 0 3px 15px rgba(0, 0, 0, 0.08);
-  text-align: center;
   transition: 0.3s;
 }
 
 .contato-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.13);
 }
 
-.contato-foto {
-  width: 100px;
-  height: 100px;
+.contato-avatar {
+  width: 85px;
+  height: 85px;
   margin: 0 auto 20px;
   border-radius: 50%;
   background: #0c85f0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
-}
-
-.contato-foto img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.contato-foto span {
   color: white;
-  font-size: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32px;
   font-weight: bold;
 }
 
@@ -81,23 +70,28 @@
 }
 
 .contato-redes a {
-  display: flex;
-  align-items: center;
-  gap: 6px;
   color: #0c85f0;
-  text-decoration: none;
   font-size: 14px;
   font-weight: bold;
+  text-decoration: none;
 }
 
 .contato-redes a:hover {
-  color: #066bc4;
+  text-decoration: underline;
 }
 
-.contato-redes img {
-  width: 22px;
-  height: 22px;
-  object-fit: contain;
+.contato-voltar {
+  margin-top: 40px;
+  padding: 12px 24px;
+  background: #0c85f0;
+  color: white;
+  border: none;
+  border-radius: 7px;
+  cursor: pointer;
+}
+
+.contato-voltar:hover {
+  background: #066bc4;
 }
 
 @media (max-width: 600px) {

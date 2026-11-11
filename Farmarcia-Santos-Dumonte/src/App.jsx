@@ -8,6 +8,7 @@ import ProdutoDetalhe from "./components/produto/ProdutoDetalhe";
 import Carrinho from "./components/carrinho/Carrinho";
 import Usuario from "./components/usuario/Usuario";
 import Acessibilidade from "./components/acessibilidade/Acessibilidade";
+import Contato from "./components/contato/Contato";
 
 const CHAVE_CARRINHO = "farmacia-santos-dumonte-carrinho";
 
@@ -37,6 +38,23 @@ function App() {
     setProdutoSelecionado(null);
     window.scrollTo({ top: 0, behavior: "smooth" });
   }
+
+  useEffect(() => {
+    function abrirContato(event) {
+      const link = event.target.closest?.('a[href="#contato"]');
+
+      if (link) {
+        event.preventDefault();
+        navegar("contato");
+      }
+    }
+
+    document.addEventListener("click", abrirContato);
+
+    return () => {
+      document.removeEventListener("click", abrirContato);
+    };
+  }, []);
 
   function atualizarPesquisa(valor) {
     setPesquisa(valor);
@@ -135,6 +153,10 @@ function App() {
 
         {pagina === "usuario" && (
           <Usuario onVoltar={() => navegar("inicio")} />
+        )}
+
+        {pagina === "contato" && (
+          <Contato onVoltar={() => navegar("inicio")} />
         )}
 
         <Footer />

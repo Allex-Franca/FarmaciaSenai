@@ -169,32 +169,4 @@
   .footer-contato a {
     transition: none;
   }
-
-  .footer-integrante {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-    margin-bottom: 12px;
-  }
-
-  .footer-integrante strong {
-    color: #fff;
-    font-size: 14px;
-  }
-
-  .footer-integrante div {
-    display: flex;
-    gap: 15px;
-  }
-
-  .footer-integrante a {
-    color: rgba(255, 255, 255, 0.85);
-    font-size: 13px;
-    text-decoration: none;
-  }
-
-  .footer-integrante a:hover {
-    color: #fff;
-    text-decoration: underline;
-  }
 }

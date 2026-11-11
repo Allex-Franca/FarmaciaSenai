@@ -3,24 +3,6 @@ import "./Footer.css";
 function Footer() {
   const anoAtual = new Date().getFullYear();
 
-  const integrantes = [
-    {
-      nome: "Desenvolvedor 1",
-      linkedin: "LINK_LINKEDIN_1",
-      github: "LINK_GITHUB_1",
-    },
-    {
-      nome: "Desenvolvedor 2",
-      linkedin: "LINK_LINKEDIN_2",
-      github: "LINK_GITHUB_2",
-    },
-    {
-      nome: "Desenvolvedor 3",
-      linkedin: "LINK_LINKEDIN_3",
-      github: "LINK_GITHUB_3",
-    },
-  ];
-
   return (
     <footer className="footer" id="sobre">
       <div className="footer-conteudo">
@@ -41,23 +23,24 @@ function Footer() {
         </nav>
 
         <section className="footer-contato" id="contato">
-          <h3>Nossa equipe</h3>
+          <h3>Fale conosco</h3>
 
-          {integrantes.map((pessoa, index) => (
-            <div className="footer-integrante" key={index}>
-              <strong>{pessoa.nome}</strong>
+          <p>
+            <span>Email</span>
+            <a href="mailto:FarmaciaSantosDumonte@gmail.com">
+              FarmaciaSantosDumonte@gmail.com
+            </a>
+          </p>
 
-              <div>
-                <a href={pessoa.linkedin} target="_blank" rel="noreferrer">
-                  LinkedIn
-                </a>
+          <p>
+            <span>Telefone</span>
+            <a href="tel:+5548954354924">(48) 95435-4924</a>
+          </p>
 
-                <a href={pessoa.github} target="_blank" rel="noreferrer">
-                  GitHub
-                </a>
-              </div>
-            </div>
-          ))}
+          <p>
+            <span>Atendimento</span>
+            Seg. a Sáb.
+          </p>
         </section>
       </div>
 
