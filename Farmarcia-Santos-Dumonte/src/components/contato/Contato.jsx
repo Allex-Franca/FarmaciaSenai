@@ -4,13 +4,13 @@ import LuanGato from "../../assets/img/luangato.png";
 function Contato({ onVoltar }) {
   const professores = [
     {
-      nome: "LuanODias",
+      nome: "Luan Dias",
       imagem:  LuanGato,
       linkedin: "https://www.linkedin.com/in/luan-de-oliveira-dias/",
       github: "https://github.com/LuanODias",
     },
     {
-      nome: "Rafael Lindermann",
+      nome: "Rafael Lindemann",
       imagem:
         "https://lumiere-a.akamaihd.net/v1/images/b_toystory_characterbanner_rex_mobile_gradient_v2_71ada690.jpeg?region=0,0,640,480",
       linkedin: "https://www.linkedin.com/in/rafael-lindemann-duarte-59437867/",
@@ -51,7 +51,31 @@ function Contato({ onVoltar }) {
           Conheça os professores e desenvolvedores da Farmácia Santos Dumonte.
         </p>
       </div>
+      <h2 className="contato-subtitulo">Desenvolvedores</h2>
 
+      <div className="contato-cards">
+        {integrantes.map((pessoa, index) => (
+          <div className="contato-card" key={index}>
+            <img
+              className="contato-avatar"
+              src={pessoa.imagem}
+              alt={pessoa.nome}
+            />
+
+            <h2>{pessoa.nome}</h2>
+
+            <div className="contato-redes">
+              <a href={pessoa.linkedin} target="_blank" rel="noreferrer">
+                LinkedIn
+              </a>
+
+              <a href={pessoa.github} target="_blank" rel="noreferrer">
+                GitHub
+              </a>
+            </div>
+          </div>
+        ))}
+      </div>
       <h2 className="contato-subtitulo">Professores</h2>
 
       <div className="contato-cards">
@@ -78,31 +102,7 @@ function Contato({ onVoltar }) {
         ))}
       </div>
 
-      <h2 className="contato-subtitulo">Desenvolvedores</h2>
 
-      <div className="contato-cards">
-        {integrantes.map((pessoa, index) => (
-          <div className="contato-card" key={index}>
-            <img
-              className="contato-avatar"
-              src={pessoa.imagem}
-              alt={pessoa.nome}
-            />
-
-            <h2>{pessoa.nome}</h2>
-
-            <div className="contato-redes">
-              <a href={pessoa.linkedin} target="_blank" rel="noreferrer">
-                LinkedIn
-              </a>
-
-              <a href={pessoa.github} target="_blank" rel="noreferrer">
-                GitHub
-              </a>
-            </div>
-          </div>
-        ))}
-      </div>
 
       <button className="contato-voltar" onClick={onVoltar}>
         Voltar para o início
